@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Banner from './Components/Banner';
+import TaskForm from './Components/TaskForm';
+import TaskList from './Components/TaskList';
 
 function App() {
+
+  const [tasks, setTasks] = useState(['Wake up', 'Make breakfast', 'Go to school'])
+
+  const linkCheck = () =>{
+    console.log('Linked!')
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div /*className="App"*/ id='main-content'>
+      <Banner />
+      <TaskForm tasks={tasks} setTasks={setTasks}/>
+      <TaskList tasks={tasks} setTasks={setTasks} linkCheck={linkCheck}/>
     </div>
   );
 }
